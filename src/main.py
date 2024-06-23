@@ -7,11 +7,16 @@ import requests
 import re
 import os
 import platform
-from banner import imprimir_banner
 import time
-from credits import creditos
-from info import info_sobre
-from info import infomacoes_uso
+import webbrowser
+##import methods
+from banner import imprimir_banner
+from banner import creditos
+from banner import info
+from manual import infomacoes_uso
+from update import release
+
+#errors
 from errors import erro_cpf
 from errors import erro_nome
 from errors import erro_pai
@@ -31,6 +36,7 @@ from errors import erro_ip
 from errors import erro_gerar_pessoa
 from errors import erro_gerar_cartao
 
+
 R = "\033[0;91m"
 B = "\033[1;36m"
 C = "\033[1;37m"
@@ -39,7 +45,6 @@ G = "\033[1;32m"
 L = "\033[1;35m"
 P = "\033[30m"
 RT = "\033[40m"
-
 
 nome_usuario = os.getlogin()
 
@@ -52,22 +57,18 @@ def animacao_carregando():
     tempo_inicial = time.time()
     while True:
         tempo_atual = time.time()
-        if tempo_atual - tempo_inicial >= 5:
+        if tempo_atual - tempo_inicial >= 3:
             break
         print(f"{L}\n\n\n\n\n\n\n\n————————————————————————————————————————————————————————\n", end="", flush=False)
         print(f"{L}    Verificando atualizações, por favor, aguarde", end="", flush=True)
         for _ in range(3):  
             for _ in range(3):  
                 print(".", end="", flush=True)
-                time.sleep(0.5)
+                time.sleep(0.3)
             print("\b\b\b   \b\b\b", end="", flush=True)
-            time.sleep(0.5)
+            time.sleep(0.3)
 
 animacao_carregando()
-
-
-
-
 
 
 def tchau():
@@ -84,23 +85,42 @@ def tchau():
     print(f"{L}====================================================\n\n\n\n")
 
 
-
-
 print("\n\n")
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
+def get_public_ip():
+    try:
+        # Faz uma solicitação GET para api.ipify.org para obter o IP público
+        response = requests.get("https://api.ipify.org")
+        
+        # Verifica se a solicitação foi bem-sucedida
+        if response.status_code == 200:
+            return response.text
+        else:
+            print("Erro ao obter o IP público. Código de status:", response.status_code)
+            return None
+    except Exception as e:
+        print("Erro ao obter o IP público:", e)
+        return None
+    
 
 def tipos():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+    ip_externo = get_public_ip()
+
     print(
         C + f"""
+
+
+
     {C}██████╗  █████╗ ██████╗  {L}██████╗ ██╗████████╗ ██████╗██╗  ██╗
     {C}██╔══██╗██╔══██╗██╔══██╗ {L}██╔══██╗██║╚══██╔══╝██╔════╝██║  ██║
     {C}██████╔╝███████║██║  ██║ {L}██████╔╝██║   ██║   ██║     ███████║
     {C}██╔══██╗██╔══██║██║  ██║ {L}██╔══██╗██║   ██║   ██║     ██╔══██║
     {C}██████╔╝██║  ██║██████╔╝ {L}██████╔╝██║   ██║   ╚██████╗██║  ██║
-    {C}╚═════╝ ╚═╝  ╚═╝╚═════╝  {L}╚═════╝ ╚═╝   ╚═╝    ╚═════╝╚═╝  ╚═╝ {C}v1.0 (BETA)       
+    {C}╚═════╝ ╚═╝  ╚═╝╚═════╝  {L}╚═════╝ ╚═╝   ╚═╝    ╚═════╝╚═╝  ╚═╝ {C}v1.1 (BETA)       
                                               {L}Created By {C}offalien\n"""                                                   
     )
 
@@ -116,24 +136,16 @@ def tipos():
     {C}[{L}7{C}]  Consulta Moradores por CEP            {C}[{B}ON{C}]           
     {C}[{L}8{C}]  Consulta de dados por Telefone        {C}[{B}ON{C}]           {C}[{L}99{C}] Sair
     {C}[{L}9{C}]  Consulta de Telefone Fixo             {C}[{B}ON{C}]           
-    {C}[{L}10{C}] Consulta por E-mail                   {C}[{B}ON{C}]           
+    {C}[{L}10{C}] Consulta por E-mail                   {C}[{B}ON{C}]           {C}[{L}?{C}] Créditos Finais                      {C}[{B}INFO{C}]
     {C}[{L}11{C}] Consulta de CNPJ                      {C}[{B}ON{C}]           {C}[{L}i{C}] Informações de uso                   {C}[{B}INFO{C}]
-    {C}[{L}12{C}] Consulta de Placa                   [OFFLINE]        {C}[{L}?{C}] Créditos Finais                      {C}[{B}INFO{C}]
+    {C}[{L}12{C}] Consulta de Placa                   [OFFLINE]        {C}[{L}!{C}] Notas de Atualização                 {C}[{B}INFO{C}]
             \n
-    {C}╔══════════════════════════════════════════════════════════════════════════════════════════════════════╗
-         {B}Discord: {L}offalien    {C}||      {L}Bad Bitch {C}© All Rights Reserved      {C}||    {B}Usuário: {L}{nome_usuario}
-    {C}╚══════════════════════════════════════════════════════════════════════════════════════════════════════╝
+    {C}╔═══════════════════════════════════════════════════════════════════════════════════════════════════════╗   
+          {B}Usuário: {L}{nome_usuario}   {C}||     {L}Bad Bitch {C}© All Rights Reserved     {C}||   {B}Seu IP: {L}{ip_externo}
+    {C}╚═══════════════════════════════════════════════════════════════════════════════════════════════════════╝
             
             """
     )
-
-
-
-
-
-
-
-
 
 
 
@@ -260,7 +272,7 @@ def tipos():
         print(f"         {C}ESTE ITEM ESTARÁ DISPONÍVEL EM BREVE!          ")
         print(f"{L}╚════════════════════════════════════════════════════════════════╝\n")
         placa = re.sub("[^0-9]+", "", placa)
-        info_sobre(placa)
+        info(placa)
 
     elif tool == "13":
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -319,21 +331,38 @@ def tipos():
         os.system('cls' if os.name == 'nt' else 'clear')
         imprimir_banner()
         infomacoes_uso()
-        input(C + f"[{L}:){C}] Aperte qualquer tecla para retornar ao menu: " + C)
+        input(C + f"[{L}X{C}] Insira qualquer tecla para continuar: " + C)
         print("\n")
         tipos()
 
     elif tool == "?":
         os.system('cls' if os.name == 'nt' else 'clear')
-        info_sobre()
-        input(C + f"[{L}:){C}] Aperte qualquer tecla para retornar ao menu: " + C)
+        info()
+        input(C + f"[{L}X{C}] Insira qualquer tecla para continuar: " + C)
         tipos()
 
+    elif tool == "!":
+        os.system('cls' if os.name == 'nt' else 'clear')
+        imprimir_banner()
+        release()
+        input(C + f"[{L}X{C}] Insira qualquer tecla para continuar: " + C)
+        tipos()
 
     else:
         print(C + f"[{L}!{C}] Seleção inválida.")
         sleep(1)
         tipos()
+
+
+
+
+
+
+
+
+
+
+
 
 def consulta(cpf):
 

@@ -5,7 +5,7 @@
 Projeto desenvolvido para auxiliar nas consultas de dados da população brasileira.
 
 
-![image](https://github.com/cristopherrissardi/Bad-Bitch-Search/assets/93612872/4d3da46a-3393-45fc-9b80-622766bc805e)
+![image](https://github.com/cristopherrissardi/Bad-Bitch-Search/assets/93612872/e33f71d8-1246-4b44-9cf7-01262211ed7b)
 
 ---
 

@@ -49,9 +49,8 @@ def release():
     print("")
     print("")
     print("═══════════════════════════════════════════════════════════════════════════════════════════════════════════")
-    print("")
-    print(
-        f"""\n
+    print(f"""\n
+
 
 {L}    ##      {C}    ##   
 {L}  ####      {C}  ####   
@@ -78,6 +77,36 @@ def release():
     print("- Endereço de IP na tela inicial")
     print("- Alteração da arte no menu de créditos")
     print("")
+    print("")
+    print("═══════════════════════════════════════════════════════════════════════════════════════════════════════════")
+    print(f"""\n
+
+
+{L}   ##     {C}    ####
+{L}  ###     {C}   ##  ##
+{L}   ##     {C}       ##
+{L}   ##     {C}     ###            Versão 1.2 {L}(BETA)  -  08/07/2024
+{L}   ##     {C}    ##
+{L}   ##   ##{C}   ##  ##
+{L} ###### ##{C}   ######
+""")
+    print("")
+    print("")
+    print(f"{I}A versão 1.2 foi alterado/implementado o seguinte:{RESET}")
+    print("")
+    print("")
+    print(f"{B}Recursos adicionados:{C}")
+    print("")
+    print("- Adicionado notas de ""Termos e responsabilidades"" na aba de (INFORMAÇÕES DE USO)")
+    print("- Melhoria na organização do código fonte.")
+    print("")
+    print("")
+    print(f"{B}Recursos removidos:{C}")
+    print("")
+    print("- As endpoints de consulta de dados foram fechadas permanentemente.")
+    print("")
+    print("")
+    print("═══════════════════════════════════════════════════════════════════════════════════════════════════════════")
     print("")
 
 

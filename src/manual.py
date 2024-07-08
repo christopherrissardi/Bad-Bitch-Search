@@ -1,7 +1,7 @@
 
 def infomacoes_uso():
 
-    print("╔═══════════════════════════════════════════════════════════════════════════════════════════════════════╗\n")
+    print(f"╔═══════════════════════════════════════════════════════════════════════════════════════════════════════╗\n")
     print(f"                   ABA DEDICADA PARA FAZER ALGUNS INFORMATIVOS SOBRE A FERRAMENTA ")
     print(f"                        NO GERAL E EXPLICAR UM POUCO O INTÚITO DE CADA MÓDULO!\n")
     print(f"╚═══════════════════════════════════════════════════════════════════════════════════════════════════════╝\n")
@@ -97,14 +97,31 @@ def infomacoes_uso():
     print(f"{L}NOTA:{C} Os dados gerados são meramente fictícios, então qualquer semelhança é tão/somente coincidência. Nenhum dado gerado aqui é verdadeiro!{C}")
     print(f"")
     print(f"{L}═════════════════════════════════════════════════════════════════════════════════════════════════════════{C}\n\n")
-
-
+    print(f"")
+    print(f"")
+    print(f"")
+    print(f"                                  ╔══════════════════════════════════════════════════╗\n")
+    print(f"                                                   USO DA FERRAMENTA! ")
+    print(f"                                              TERMOS E RESPONSABILIDADES\n")
+    print(f"                                  ╚══════════════════════════════════════════════════╝\n")
+    print(f"")
+    print(f"")
+    print(f"É DE EXTREMA IMPORTÂNCIA QUE, ANTES DE USAR A FERRAMENTA, O USUÁRIO PRESTE ATENÇÃO E LEIA ATENTAMENTE OS TERMOS E RESPONSABILIDADES DA ABA EM QUESTÃO.")
+    print(f"")
+    print(f"{L}1.{C} - Termos e responsabilidades")
+    print(f"")
+    print(f"{L}A.{C} Conformidade com a LGPD e Proteção de Dados - As consultas de dados realizadas pela ferramenta Bad Bitch estão em estrita conformidade com a Lei Geral de Proteção de Dados (LGPD). Isso significa que:\n          - Os dados coletados são utilizados apenas para os fins específicos para os quais foram autorizados.\n          - Os usuários têm o direito de acessar, corrigir ou excluir seus dados pessoais, conforme previsto pela LGPD.\n")
+    print(f"{L}B.{C} Uso Indevido das Consultas - O criador da ferrameta não é responsável pelo uso indevido das consultas aqui realizadas. Qualquer uso indevido é estritamente proibido e não reflete a intenção ou responsabilidade do criador.\n")
+    print(f"{L}C.{C} Dados Gerados e Coincidências - Dados gerados pela ferramenta que possam coincidir com informações reais são puramente coincidência. O mesmo é projetado para fornecer informações gerais baseadas em dados disponíveis\npublicamente e não garante a precisão ou exatidão das informações fornecidas.\n")
+    print(f"{L}D.{C} Uso Consciente e Ético da Ferramenta - Os usuários são incentivados a usar essa ferramenta de maneira consciente e ética. Isso inclui:\n           - Não utilizar a ferramenta para atividades ilegais ou ilícitas.\n           - Respeitar os direitos de privacidade de terceiros.\n           - Não realizar consultas em larga escala que possam sobrecarregar os sistemas ou violar os termos de serviço de terceiros.\n")
+    print(f"{L}E.{C} Consequências do Uso Indevido - Qualquer uso indevido do mesmo resultará em medidas disciplinares, incluindo, mas não limitado a, desabilitação dos mecanismos de busca e revogação do acesso à ferramenta.")
+    print(f"")
+    print(f"")
+    print(f"")
 
 
 
 R = "\033[0;91m"
-
-
 B = "\033[1;36m"
 C = "\033[1;37m"
 Y = "\033[1;33m"

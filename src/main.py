@@ -1,3 +1,5 @@
+##//---------------------------BIBLIOTÉCAS---------------------------//##
+
 from operator import length_hint
 from os import system
 import random
@@ -9,14 +11,18 @@ import os
 import platform
 import time
 import webbrowser
-##import methods
+from dotenv import load_dotenv 
+
+##//-----------------------MÉTODOS IMPORTADOS----------------------------//##
+
 from banner import imprimir_banner
 from banner import creditos
 from banner import info
 from manual import infomacoes_uso
 from update import release
 
-#errors
+##//----------------------------ERROS-----------------------------------//##
+
 from errors import erro_cpf
 from errors import erro_nome
 from errors import erro_pai
@@ -36,6 +42,11 @@ from errors import erro_ip
 from errors import erro_gerar_pessoa
 from errors import erro_gerar_cartao
 
+load_dotenv()
+API_KEY = os.getenv("API_KEY")
+
+
+##//-----------------------------------CORES---------------------------------//##
 
 R = "\033[0;91m"
 B = "\033[1;36m"
@@ -47,11 +58,10 @@ P = "\033[30m"
 RT = "\033[40m"
 
 nome_usuario = os.getlogin()
+os.system('cls' if os.name == 'nt' else 'clear') 
 
 
-os.system('cls' if os.name == 'nt' else 'clear')
-
-
+##/------------------------FUNÇÃO PRIMÁRIA------------------------------/##
 
 def animacao_carregando():
     tempo_inicial = time.time()
@@ -70,11 +80,10 @@ def animacao_carregando():
 
 animacao_carregando()
 
-
 def tchau():
-    print("Aguarde, saindo em:")
+    print("Aguarde, saindo em:") 
     print("3...")
-    sleep(1)
+    sleep(1) 
     print("2..")
     sleep(1)
     print("1.")
@@ -84,17 +93,15 @@ def tchau():
     print(f"                   {C}Até breve {B}{nome_usuario}               ")
     print(f"{L}====================================================\n\n\n\n")
 
-
 print("\n\n")
-
 os.system('cls' if os.name == 'nt' else 'clear')
+
+##//-----------------------------PEGANDO IP PÚBLICO--------------------------------//##
 
 def get_public_ip():
     try:
-        # Faz uma solicitação GET para api.ipify.org para obter o IP público
         response = requests.get("https://api.ipify.org")
         
-        # Verifica se a solicitação foi bem-sucedida
         if response.status_code == 200:
             return response.text
         else:
@@ -104,14 +111,15 @@ def get_public_ip():
         print("Erro ao obter o IP público:", e)
         return None
     
+##//-----------------------FUNÇÃO PRINCIPAL DO SCRIPT---------------------//##
 
 def tipos():
     os.system('cls' if os.name == 'nt' else 'clear')
 
     ip_externo = get_public_ip()
 
-    print(
-        C + f"""
+    print(C + f"""
+
 
 
 
@@ -122,30 +130,30 @@ def tipos():
     {C}██████╔╝██║  ██║██████╔╝ {L}██████╔╝██║   ██║   ╚██████╗██║  ██║
     {C}╚═════╝ ╚═╝  ╚═╝╚═════╝  {L}╚═════╝ ╚═╝   ╚═╝    ╚═════╝╚═╝  ╚═╝ {C}v1.1 (BETA)       
                                               {L}Created By {C}offalien\n"""                                                   
-    )
 
-    print(f"""
-  {C}[{L}OPÇÕES{C}]                                   {C}[{L}STATUS{C}]           
+)
 
-    {C}[{L}1{C}]  Consulta de CPF                       {C}[{B}ON{C}]           {C}[{L}13{C}] Informações de Operadora             {C}[{B}ON{C}]
-    {C}[{L}2{C}]  Consulta de Nome                      {C}[{B}ON{C}]           {C}[{L}14{C}] Consultar CEP                        {C}[{B}ON{C}]
-    {C}[{L}3{C}]  Consulta por nome do pai              {C}[{B}ON{C}]           {C}[{L}15{C}] Consulta de BIN (Cartão)             {C}[{B}ON{C}]
-    {C}[{L}4{C}]  Consulta por nome da mãe              {C}[{B}ON{C}]           {C}[{L}16{C}] Consulta de IP/Site                  {C}[{B}ON{C}]
-    {C}[{L}5{C}]  Consulta de RG                       [BETA]          {C}[{L}17{C}] Gerador de Pessoa                    {C}[{B}ON{C}]
-    {C}[{L}6{C}]  Consulta de CNS                       {C}[{B}ON{C}]           {C}[{L}18{C}] Gerador de Cartão de Crédito         {C}[{B}ON{C}]                                                         
-    {C}[{L}7{C}]  Consulta Moradores por CEP            {C}[{B}ON{C}]           
-    {C}[{L}8{C}]  Consulta de dados por Telefone        {C}[{B}ON{C}]           {C}[{L}99{C}] Sair
-    {C}[{L}9{C}]  Consulta de Telefone Fixo             {C}[{B}ON{C}]           
-    {C}[{L}10{C}] Consulta por E-mail                   {C}[{B}ON{C}]           {C}[{L}?{C}] Créditos Finais                      {C}[{B}INFO{C}]
-    {C}[{L}11{C}] Consulta de CNPJ                      {C}[{B}ON{C}]           {C}[{L}i{C}] Informações de uso                   {C}[{B}INFO{C}]
-    {C}[{L}12{C}] Consulta de Placa                   [OFFLINE]        {C}[{L}!{C}] Notas de Atualização                 {C}[{B}INFO{C}]
+    print(f"""\n  {C}[{L}OPÇÕES{C}]                                    {C}[{L}STATUS{C}]           
+
+    {C}[{L}1{C}]  Consulta de CPF                       {C}[{R}OFF{C}]           {C}[{L}13{C}] Informações de Operadora             {C}[{B}ON{C}]
+    {C}[{L}2{C}]  Consulta de Nome                      {C}[{R}OFF{C}]           {C}[{L}14{C}] Consultar CEP                        {C}[{B}ON{C}]
+    {C}[{L}3{C}]  Consulta por nome do pai              {C}[{R}OFF{C}]           {C}[{L}15{C}] Consulta de BIN (Cartão)             {C}[{B}ON{C}]
+    {C}[{L}4{C}]  Consulta por nome da mãe              {C}[{R}OFF{C}]           {C}[{L}16{C}] Consulta de IP/Site                  {C}[{B}ON{C}]
+    {C}[{L}5{C}]  Consulta de RG                        {C}[{R}OFF{C}]           {C}[{L}17{C}] Gerador de Pessoa                    {C}[{B}ON{C}]
+    {C}[{L}6{C}]  Consulta de CNS                       {C}[{R}OFF{C}]           {C}[{L}18{C}] Gerador de Cartão de Crédito         {C}[{B}ON{C}]                                                         
+    {C}[{L}7{C}]  Consulta Moradores por CEP            {C}[{R}OFF{C}]           
+    {C}[{L}8{C}]  Consulta de dados por Telefone        {C}[{R}OFF{C}]           {C}[{L}99{C}] Sair
+    {C}[{L}9{C}]  Consulta de Telefone Fixo             {C}[{R}OFF{C}]           
+    {C}[{L}10{C}] Consulta por E-mail                   {C}[{R}OFF{C}]           {C}[{L}?{C}] Créditos Finais                      {C}[{B}INFO{C}]
+    {C}[{L}11{C}] Consulta de CNPJ                      {C}[{B}ON{C}]            {C}[{L}i{C}] Informações de uso                   {C}[{B}INFO{C}]
+    {C}[{L}12{C}] Consulta de Placa                   [OFFLINE]         {C}[{L}!{C}] Notas de Atualização                 {C}[{B}INFO{C}]
             \n
     {C}╔═══════════════════════════════════════════════════════════════════════════════════════════════════════╗   
           {B}Usuário: {L}{nome_usuario}   {C}||     {L}Bad Bitch {C}© All Rights Reserved     {C}||   {B}Seu IP: {L}{ip_externo}
     {C}╚═══════════════════════════════════════════════════════════════════════════════════════════════════════╝
             
             """
-    )
+)
 
 
 
@@ -161,7 +169,6 @@ def tipos():
         cpf = re.sub("[^0-9]+", "", cpf)
         consulta(cpf)
         
-
     elif tool == "2":
         os.system('cls' if os.name == 'nt' else 'clear')
         imprimir_banner()
@@ -171,7 +178,6 @@ def tipos():
         print(f"{L}╚════════════════════════════════════════════════════════════════╝")
         nome = input(C + f"\n[{L}*{C}] DIGITE O NOME COMPLETO: " + C)
         consulta_nome(nome)
-
 
     elif tool == "3":
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -313,6 +319,8 @@ def tipos():
         busca_ip()
 
 
+##//--------------------------------------TECLA DESEJADA------------------------------------------//##
+
     elif tool == "17":
         os.system('cls' if os.name == 'nt' else 'clear')
         imprimir_banner()
@@ -353,21 +361,12 @@ def tipos():
         sleep(1)
         tipos()
 
-
-
-
-
-
-
-
-
-
-
+#//--------------------------------------CONSULTA DE CPF------------------------------------------//#
 
 def consulta(cpf):
 
     url = f"http://18.228.166.136:8000/api/v1/database/datasus/search?cpf={cpf}"
-    headers = {'apikey': 'b08a14ec7cdbf0d7470c7d751dbf0733'}
+    headers = {'apikey': API_KEY}
 
     response = requests.get(url, headers=headers)
 
@@ -411,8 +410,7 @@ def consulta(cpf):
 
 
                 salvar_arquivo = input(
-                    C + f"[{L}?{C}] DESEJA SALVAR OS RESULTADOS EM UM ARQUIVO? [{G}S{C}/{R}N{C}]: "
-                ).lower()
+                    C + f"[{L}?{C}] DESEJA SALVAR OS RESULTADOS EM UM ARQUIVO? [{G}S{C}/{R}N{C}]: ").lower()
 
                 if salvar_arquivo == "s" or salvar_arquivo == "sim" or salvar_arquivo == "y" or salvar_arquivo == "yes":
                     
@@ -450,9 +448,8 @@ def consulta(cpf):
 
                     print(f"{G}[{C}+{G}] OS RESULTADOS FORAM SALVOS COM SUCESSO NO ARQUIVO {cpf_arquivo}\n")
 
-                nova = input(
-                    C + f"[{L}?{C}] DESEJA REALIZAR UMA NOVA CONSULTA? [{G}S{C}/{R}N{C}]: "
-                ).lower()
+                nova = input(C + f"[{L}?{C}] DESEJA REALIZAR UMA NOVA CONSULTA? [{G}S{C}/{R}N{C}]: ").lower()
+                
                 os.system('cls' if os.name == 'nt' else 'clear')
                 
                 if nova == "s" or nova == "sim" or nova == "y" or nova == "yes":
@@ -469,8 +466,9 @@ def consulta(cpf):
         tipos()
 
 def consulta_nome(nome):
+
     url = f"http://18.228.166.136:8000/api/v1/database/serasa/search?nome={nome}"
-    headers = {'apikey': 'b08a14ec7cdbf0d7470c7d751dbf0733'}
+    headers = {'apikey': API_KEY}
 
     response = requests.get(url, headers=headers)
 
@@ -617,8 +615,9 @@ def consulta_pai(pai):
         tipos()
 
 def consulta_mae(mae):
+
     url = f"http://18.228.166.136:8000/api/v1/database/datasus/search?mae={mae}"
-    headers = {'apikey': 'b08a14ec7cdbf0d7470c7d751dbf0733'}
+    headers = {'apikey': API_KEY}
 
     response = requests.get(url, headers=headers)
 
@@ -699,7 +698,7 @@ def consulta_mae(mae):
 def consulta_rg(rg):
 
     url = f"http://18.228.166.136:8000/api/v1/database/datasus/search?rg={rg}"
-    headers = {'apikey': 'b08a14ec7cdbf0d7470c7d751dbf0733'}
+    headers = {'apikey': API_KEY}
 
     response = requests.get(url, headers=headers)
 
@@ -802,7 +801,7 @@ def consulta_rg(rg):
 def consulta_cns(cns):
 
     url = f"http://18.228.166.136:8000/api/v1/database/datasus/search?cns={cns}"
-    headers = {'apikey': 'b08a14ec7cdbf0d7470c7d751dbf0733'}
+    headers = {'apikey': API_KEY}
 
     response = requests.get(url, headers=headers)
 
@@ -905,8 +904,9 @@ def consulta_cns(cns):
         tipos()
 
 def consulta_cep(cep):
+
     url = f"http://18.228.166.136:8000/api/v1/database/datasus/search?cep={cep}"
-    headers = {'apikey': 'b08a14ec7cdbf0d7470c7d751dbf0733'}
+    headers = {'apikey': API_KEY}
 
     response = requests.get(url, headers=headers)
 
@@ -985,8 +985,9 @@ def consulta_cep(cep):
         tipos()
 
 def consulta_telefone(telefone):
+
     url = f"http://18.228.166.136:8000/api/v1/database/telefone/search?telefone={telefone}"
-    headers = {'apikey': 'b08a14ec7cdbf0d7470c7d751dbf0733'}
+    headers = {'apikey': API_KEY}
 
     response = requests.get(url, headers=headers)
 
@@ -1069,8 +1070,9 @@ def consulta_telefone(telefone):
         tipos()
 
 def consulta_fixo(fixo):
+
     url = f"http://18.228.166.136:8000/api/v1/database/telefone/search?fixo={fixo}"
-    headers = {'apikey': 'b08a14ec7cdbf0d7470c7d751dbf0733'}
+    headers = {'apikey': API_KEY}
 
     response = requests.get(url, headers=headers)
 
@@ -1155,7 +1157,7 @@ def consulta_fixo(fixo):
 def consulta_email(email):
 
     url = f"http://18.228.166.136:8000/api/v1/datasus_emails/search?email={email}"
-    headers = {'apikey': 'b08a14ec7cdbf0d7470c7d751dbf0733'}
+    headers = {'apikey': API_KEY}
 
     response = requests.get(url, headers=headers)
 
@@ -1371,7 +1373,9 @@ def consulta_cnpj(cnpj):
 
 def consulta_operadora(operadora):
 
-    url = f"http://apilayer.net/api/validate?access_key=317fca6d1dc194d6c5e5d16898b63ddf&number={operadora}&country_code=&format=1"
+    operadora_key_api = os.getenv("OPERADORA_TOKEN")
+
+    url = f"http://apilayer.net/api/validate?access_key={operadora_key_api}&number={operadora}&country_code=&format=1"
 
     response = requests.get(url)
 
@@ -1571,17 +1575,16 @@ def bin_cc(bin):
         print(R + "Erro:", e)
         tipos()
 
+#//-----------------------------------------------------GERADORES----------------------------------------------------------------//#
 
-
-
-
-
-
+#------ Gerador de pessoas
 
 
 def gerarpessoa():
 
-    url = f"https://api.invertexto.com/v1/faker?token=4616%7CdEehBVzCGLelV7ORmXhmRxgdROmglDok&locale=pt_BR"
+    gerar_pessoa_api_key = os.getenv("GEN_DATA_API_KEY")
+
+    url = f"https://api.invertexto.com/v1/faker?token={gerar_pessoa_api_key}&locale=pt_BR"
 
     response = requests.get(url)
 
@@ -1660,15 +1663,13 @@ def gerarpessoa():
         print(R + "Erro:", e)
         tipos()
 
-
-
-
-
+#------ Gerador de cartão
 
 def gerarcartao():
 
+    gerar_cartao_key = os.getenv("GEN_DATA_API_KEY")
 
-    url = requests.get(f"https://api.invertexto.com/v1/faker?token=4616%7CdEehBVzCGLelV7ORmXhmRxgdROmglDok&locale=pt_BR").json()
+    url = requests.get(f"https://api.invertexto.com/v1/faker?token={gerar_cartao_key}&locale=pt_BR").json()
 
     random_numbers = [random.randint(100, 999) for _ in range(1)]
                 
@@ -1731,7 +1732,6 @@ def gerarcartao():
 def busca_ip():
 
     ip = input(C + f"[{L}*{C}] DIGITE A NÚMERO DE IP A SER CONSULTADO: " + C)
-
     url = requests.get(f'http://ipwhois.app/json/{ip}')
 
     json = url.json()
@@ -1810,22 +1810,6 @@ def busca_ip():
         erro_ip()
         sleep(3)
         tipos()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 if __name__ == '__main__':

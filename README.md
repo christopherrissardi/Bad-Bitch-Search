@@ -5,7 +5,7 @@
 Projeto desenvolvido para auxiliar nas consultas de dados da população brasileira.
 
 
-![image](https://github.com/cristopherrissardi/Bad-Bitch-Search/assets/93612872/6e822a9e-322f-4499-94a4-4f608fc44fec)
+![image](https://github.com/cristopherrissardi/Bad-Bitch-Search/assets/93612872/4d3da46a-3393-45fc-9b80-622766bc805e)
 
 ---
 
@@ -59,3 +59,11 @@ Consulte a aba de `Informações de uso` da ferramenta para ver como funciona to
 ## ⚠️ Change log - 20/06/2024
 
 As endpoints das consulta de dados pessoais foram fechadas permanentemente. No entanto, as outras consultas ainda estão funcionando como as consulta do 13 ao 18.
+
+---
+
+## ⚠️ IMPORTANTE
+
+Para usuários que não são familiarizados com Python, deixei a ferramenta em questão compilada para que os usuários de Windows possam usar executando a ferramenta em .exe, no entanto, vale ressaltar que ao usar a ferramenta em python, algumas das funcionalidades estão desabilitadas devido o mesmo possuir API_KEYS dentro do arquivo .env, o que não foi importado aqui para o repositório por motivos obvios. 
+
+Peço gentilmente que não copie, plagie ou clone o código da ferramenta. Caso você tenha interesse em usar o projeto para estudar ou para desenvolver novas ferramentas baseando-se na mesma, será de grande serventia que deixe os créditos e referências no projeto! ficarei extramamente feliz em saber que pude contribuir de alguma forma! Desde já agradeço a compreensão!
